@@ -38,7 +38,9 @@ export async function seedAdmin() {
   const { ADMIN_USERNAME: username, ADMIN_NAME: name, ADMIN_PASSWORD: password } = process.env;
   if (usersRepository.countActiveAdmins() > 0) return console.log('✔ Administrador existente (sin cambios)');
   if (!username || !name || !password) {
-    console.error('✖ Definí ADMIN_USERNAME, ADMIN_NAME y ADMIN_PASSWORD en .env para crear el administrador.');
+    const missing = ['ADMIN_USERNAME', 'ADMIN_NAME', 'ADMIN_PASSWORD'].filter((k) => !process.env[k]);
+    console.error(`✖ Faltan ${missing.join(', ')} para crear el primer administrador.`);
+    console.error('  Definilas en backend/.env (local) o en las variables de entorno del hosting (Render: servicio → Environment).');
     process.exit(1);
   }
   const check = passwordSchema.safeParse(password);
