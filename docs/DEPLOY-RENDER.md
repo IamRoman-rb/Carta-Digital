@@ -32,6 +32,12 @@ Cada `git push` a `main` vuelve a desplegar solo. Las migraciones de base se apl
 - `SEED_DEMO=true` carga mesas, carta y usuarios de demostración **solo si la base está vacía**; las contraseñas
   temporales de esos usuarios aparecen una vez en los *Logs* del despliegue.
 
+## Prueba gratuita (sin tarjeta)
+
+`render-demo.yaml` despliega en el plan gratuito, sin disco: **New → Blueprint →** repo → en *Blueprint Path* escribí
+`render-demo.yaml`. La base se borra en cada reinicio o suspensión (≈15 min sin visitas) y la demo se vuelve a cargar;
+sirve para mostrar la carta, el QR y el AR, no para operar.
+
 ## Costos y límites
 
 - El disco persistente **requiere un plan pago** (Starter o superior). En el plan gratuito el disco se borra en cada
