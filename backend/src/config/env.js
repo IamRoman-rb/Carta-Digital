@@ -36,7 +36,14 @@ const schema = z.object({
   SERVE_FRONTEND_DIR: z.string().optional().default(''),
 });
 
-const parsed = schema.safeParse(process.env);
+// En Render la URL pública la provee la plataforma (RENDER_EXTERNAL_URL); un valor explícito tiene prioridad.
+const source = { ...process.env };
+if (source.RENDER_EXTERNAL_URL) {
+  source.PUBLIC_APP_URL ||= source.RENDER_EXTERNAL_URL;
+  source.CORS_ORIGINS ||= source.RENDER_EXTERNAL_URL;
+}
+
+const parsed = schema.safeParse(source);
 if (!parsed.success) {
   console.error('Configuración inválida. Revisá el archivo .env (ver .env.example):');
   for (const issue of parsed.error.issues) console.error(` - ${issue.path.join('.')}: ${issue.message}`);
