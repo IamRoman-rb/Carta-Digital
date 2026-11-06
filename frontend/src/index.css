@@ -1,0 +1,164 @@
+@import 'tailwindcss';
+/* Fuentes autoalojadas, solo subconjunto latino y pesos usados (ahorro de datos). */
+@import '@fontsource/epilogue/latin-600.css';
+@import '@fontsource/epilogue/latin-700.css';
+@import '@fontsource/plus-jakarta-sans/latin-400.css';
+@import '@fontsource/plus-jakarta-sans/latin-600.css';
+@import '@fontsource/plus-jakarta-sans/latin-700.css';
+
+/* Design system "Warm Culinary AR" */
+@theme {
+  --color-surface: #fff8f4;
+  --color-surface-dim: #e0d9d3;
+  --color-surface-lowest: #ffffff;
+  --color-surface-low: #faf2ed;
+  --color-surface-container: #f4ece7;
+  --color-surface-high: #eee7e1;
+  --color-surface-highest: #e9e1dc;
+  --color-on-surface: #1e1b18;
+  --color-on-surface-variant: #594139;
+  --color-inverse-surface: #33302c;
+  --color-outline: #8d7168;
+  --color-outline-variant: #e1bfb5;
+  --color-primary: #a73400;
+  --color-primary-container: #cb4914;
+  --color-primary-fixed: #ffdbcf;
+  --color-primary-fixed-dim: #ffb59c;
+  --color-on-primary-fixed: #390c00;
+  --color-secondary: #855300;
+  --color-secondary-container: #fea619;
+  --color-on-secondary-container: #684000;
+  --color-secondary-fixed: #ffddb8;
+  --color-tertiary: #006947;
+  --color-tertiary-container: #00855b;
+  --color-tertiary-fixed: #6ffbbe;
+  --color-tertiary-fixed-dim: #4edea3;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  --font-headline: 'Epilogue', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --text-display: 36px;
+  --text-display--line-height: 44px;
+  --text-display--letter-spacing: -0.01em;
+  --text-headline-lg: 28px;
+  --text-headline-lg--line-height: 36px;
+  --text-headline-md: 22px;
+  --text-headline-md--line-height: 30px;
+  --text-headline-sm: 18px;
+  --text-headline-sm--line-height: 26px;
+  --text-label: 12px;
+  --text-label--line-height: 16px;
+  --text-label--letter-spacing: 0.02em;
+  --text-micro: 10px;
+  --text-micro--line-height: 14px;
+  --text-micro--letter-spacing: 0.04em;
+
+  --radius-card: 1.5rem;
+  --radius-card-lg: 2rem;
+
+  --shadow-base: 0 4px 16px -2px rgb(30 27 24 / 0.05), 0 2px 6px -1px rgb(30 27 24 / 0.03);
+  --shadow-raised: 0 12px 28px -4px rgb(30 27 24 / 0.08), 0 4px 10px -2px rgb(30 27 24 / 0.04);
+  --shadow-overlay: 0 24px 48px -8px rgb(30 27 24 / 0.16);
+  --shadow-glow: 0 8px 20px -2px rgb(217 83 30 / 0.35);
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --text-display: 44px;
+    --text-display--line-height: 52px;
+    --text-headline-lg: 36px;
+    --text-headline-lg--line-height: 44px;
+    --text-headline-md: 24px;
+    --text-headline-md--line-height: 32px;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-surface text-on-surface font-sans antialiased;
+    overscroll-behavior-y: none;
+  }
+  h1, h2, h3, h4 {
+    @apply font-headline;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-secondary-container);
+    outline-offset: 2px;
+  }
+  dialog::backdrop {
+    background: rgb(30 27 24 / 0.55);
+    backdrop-filter: blur(3px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgb(255 248 244 / 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .hud {
+    background: rgb(30 27 24 / 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgb(255 255 255 / 0.15);
+  }
+  .card {
+    @apply bg-surface-lowest rounded-card shadow-base;
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .label-caps {
+    @apply text-micro font-bold uppercase tracking-wider text-on-surface-variant;
+  }
+}
+
+@keyframes pulse-ring {
+  0%, 100% { box-shadow: 0 0 0 0 rgb(203 73 20 / 0.45); }
+  50% { box-shadow: 0 0 0 8px rgb(203 73 20 / 0); }
+}
+.animate-pulse-ring {
+  animation: pulse-ring 2.2s ease-in-out infinite;
+}
+
+/* Impresión de tickets en comandera térmica de 80 mm */
+@media print {
+  @page {
+    size: 80mm auto;
+    margin: 0;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .print-area, .print-area * {
+    visibility: visible;
+  }
+  .print-area {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 80mm;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

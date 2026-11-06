@@ -1,0 +1,78 @@
+{
+  "sectors": [
+    { "name": "Salón Principal", "tables": [
+      { "number": 1, "seats": 2, "shape": "round", "pos_x": 22, "pos_y": 12 },
+      { "number": 2, "seats": 4, "shape": "square", "pos_x": 40, "pos_y": 12 },
+      { "number": 3, "seats": 4, "shape": "square", "pos_x": 8, "pos_y": 42 },
+      { "number": 5, "seats": 4, "shape": "square", "pos_x": 8, "pos_y": 70 },
+      { "number": 8, "seats": 2, "shape": "round", "pos_x": 70, "pos_y": 38 },
+      { "number": 11, "seats": 4, "shape": "rect", "pos_x": 50, "pos_y": 66 },
+      { "number": 12, "seats": 4, "shape": "rect", "pos_x": 75, "pos_y": 66 },
+      { "number": 14, "seats": 4, "shape": "round", "pos_x": 40, "pos_y": 46 }
+    ]},
+    { "name": "Terraza", "tables": [
+      { "number": 20, "seats": 4, "shape": "square", "pos_x": 12, "pos_y": 20 },
+      { "number": 21, "seats": 4, "shape": "square", "pos_x": 36, "pos_y": 20 },
+      { "number": 22, "seats": 6, "shape": "rect", "pos_x": 60, "pos_y": 20 },
+      { "number": 23, "seats": 2, "shape": "round", "pos_x": 24, "pos_y": 60 }
+    ]},
+    { "name": "Barra", "tables": [
+      { "number": 31, "seats": 1, "shape": "round", "pos_x": 15, "pos_y": 40 },
+      { "number": 32, "seats": 1, "shape": "round", "pos_x": 35, "pos_y": 40 },
+      { "number": 33, "seats": 1, "shape": "round", "pos_x": 55, "pos_y": 40 },
+      { "number": 34, "seats": 1, "shape": "round", "pos_x": 75, "pos_y": 40 }
+    ]}
+  ],
+  "categories": [
+    { "name": "Picadas", "icon": "utensils" },
+    { "name": "Milanesas", "icon": "drumstick" },
+    { "name": "Pizzas", "icon": "pizza" },
+    { "name": "Principales", "icon": "beef" },
+    { "name": "Cafetería", "icon": "coffee" },
+    { "name": "Postres", "icon": "ice-cream" },
+    { "name": "Bebidas", "icon": "wine" },
+    { "name": "Combos", "icon": "sparkles" }
+  ],
+  "products": [
+    { "category": "Picadas", "sku": "PIC-01", "name": "Gran Picada de Campo", "description": "Quesos madurados de estancia, jamón serrano reserva, aceitunas marinadas y pan de campo tibio recién horneado.", "price": 1450000, "cost": 510000, "station": "frios", "prep_minutes": 12, "diameter_cm": 38, "serves": "Para compartir 2-3 pers.", "badge": "Recomendado", "featured": true, "allergens": ["gluten", "leche", "frutos_secos"], "image": "picada.jpg" },
+    { "category": "Milanesas", "sku": "MIL-01", "name": "Milanesa Napolitana Suprema XL", "description": "Corte seleccionado de carne tierna, pomodoro artesanal de tomates asados, doble capa de mozzarella gratinada y papas rústicas.", "price": 1280000, "cost": 420000, "station": "cocina", "prep_minutes": 22, "diameter_cm": 34, "serves": "Para 2 personas", "badge": "Especial de la casa", "featured": true, "allergens": ["gluten", "huevo", "leche"], "image": "milanesa.jpg",
+      "modifier_groups": [
+        { "name": "Elegí tu guarnición", "min_select": 1, "max_select": 1, "options": [
+          { "name": "Papas rústicas al romero", "description": "Crujientes con sal marina y hierbas" },
+          { "name": "Puré de papas cremoso", "description": "Con manteca noisette" },
+          { "name": "Ensalada mixta de estación", "description": "Hojas verdes, tomates cherry y cebolla morada" }
+        ]},
+        { "name": "Sumale a tu experiencia", "min_select": 0, "max_select": 3, "options": [
+          { "name": "2 huevos fritos de campo", "description": "Yema líquida a caballo", "price_delta": 120000 },
+          { "name": "Panceta ahumada crocante", "description": "Curada y dorada", "price_delta": 150000 },
+          { "name": "Queso cheddar fundido", "description": "Topping cremoso", "price_delta": 110000 }
+        ]}
+      ]},
+    { "category": "Pizzas", "sku": "PIZ-01", "name": "Pizza Napolitana Margherita D.O.C.", "description": "Harina orgánica con 48 h de levado en frío, salsa San Marzano, fior di latte fundido y albahaca fresca.", "price": 990000, "cost": 230000, "station": "horno", "prep_minutes": 15, "diameter_cm": 32, "serves": "8 porciones", "badge": "Apto vegetariano", "featured": true, "tags": ["vegetariano"], "allergens": ["gluten", "leche"], "image": "pizza.jpg" },
+    { "category": "Pizzas", "sku": "PIZ-02", "name": "Pizza Cuatro Quesos", "description": "Mozzarella, provolone, roquefort y parmesano sobre masa madre.", "price": 1090000, "cost": 280000, "station": "horno", "prep_minutes": 15, "diameter_cm": 32, "serves": "8 porciones", "tags": ["vegetariano"], "allergens": ["gluten", "leche"], "image": "pizza-2.jpg" },
+    { "category": "Principales", "sku": "PRI-01", "name": "Ojo de Bife Madurado 400 g", "description": "Punto a elección, a la parrilla, con papas rústicas al romero.", "price": 1980000, "cost": 870000, "station": "parrilla", "prep_minutes": 25, "tags": ["sin_tacc"],
+      "modifier_groups": [
+        { "name": "Punto de cocción", "min_select": 1, "max_select": 1, "options": [ { "name": "Jugoso" }, { "name": "A punto" }, { "name": "Cocido" } ] }
+      ]},
+    { "category": "Principales", "sku": "PRI-02", "name": "Risotto de Hongos y Trufa", "description": "Arroz carnaroli, hongos portobello, aceite de trufa y parmesano.", "price": 1450000, "cost": 470000, "station": "cocina", "prep_minutes": 20, "tags": ["vegetariano", "sin_tacc"], "allergens": ["leche"] },
+    { "category": "Cafetería", "sku": "CAF-04", "name": "Flat White y 2 Medialunas de Manteca", "description": "Doble shot de espresso con leche texturizada sedosa, acompañado de 2 medialunas glaseadas.", "price": 420000, "cost": 98000, "station": "cafeteria", "prep_minutes": 6, "diameter_cm": 24, "serves": "Taza 220 ml + 2 u.", "badge": "Café de origen", "featured": true, "allergens": ["gluten", "leche", "huevo"], "image": "flat-white.jpg" },
+    { "category": "Cafetería", "sku": "CAF-01", "name": "Espresso", "description": "Blend de especialidad.", "price": 250000, "cost": 40000, "station": "cafeteria", "prep_minutes": 3, "tags": ["vegano", "sin_tacc"] },
+    { "category": "Postres", "sku": "POS-01", "name": "Flan Mixto Casero", "description": "Con dulce de leche y crema.", "price": 450000, "cost": 90000, "station": "pasteleria", "prep_minutes": 4, "tags": ["sin_tacc"], "allergens": ["huevo", "leche"] },
+    { "category": "Bebidas", "sku": "BEB-09", "name": "Cerveza IPA 500 cc", "description": "Tirada bien fría.", "price": 290000, "cost": 115000, "station": "barra", "prep_minutes": 2, "is_alcoholic": true, "allergens": ["gluten"] },
+    { "category": "Bebidas", "sku": "BEB-02", "name": "Copa de Malbec Reserva", "description": "Valle de Uco, Mendoza.", "price": 400000, "cost": 140000, "station": "barra", "prep_minutes": 2, "is_alcoholic": true, "tags": ["vegano", "sin_tacc"], "allergens": ["sulfitos"] },
+    { "category": "Bebidas", "sku": "BEB-01", "name": "Agua mineral 500 ml", "description": "Con o sin gas.", "price": 210000, "cost": 50000, "station": "barra", "prep_minutes": 1, "tags": ["vegano", "sin_tacc"],
+      "modifier_groups": [ { "name": "Tipo", "min_select": 1, "max_select": 1, "options": [ { "name": "Sin gas" }, { "name": "Con gas" } ] } ] },
+    { "category": "Bebidas", "sku": "BEB-03", "name": "Limonada con menta y jengibre", "description": "Jarra 1 L.", "price": 380000, "cost": 70000, "station": "barra", "prep_minutes": 4, "tags": ["vegano", "sin_tacc"] },
+    { "category": "Combos", "sku": "CMB-01", "name": "Combo After Office", "description": "2 Cervezas IPA + Gran Picada de Campo.", "price": 1790000, "cost": 740000, "station": "frios", "prep_minutes": 12, "is_combo": true, "combo": [ { "sku": "BEB-09", "quantity": 2 }, { "sku": "PIC-01", "quantity": 1 } ] }
+  ],
+  "promotions": [
+    { "name": "Happy Hour", "description": "30% off en bebidas de 18 a 21 h", "percent": 30, "target_type": "category", "target": "Bebidas", "days": [1, 2, 3, 4, 5], "start_time": "18:00", "end_time": "21:00" }
+  ],
+  "users": [
+    { "name": "Sofía Martínez", "username": "sofia", "role": "mozo", "sector": "Salón Principal" },
+    { "name": "Diego Romero", "username": "diego", "role": "mozo", "sector": "Terraza" },
+    { "name": "Matías Ruiz", "username": "matias", "role": "encargado" },
+    { "name": "Lucas Benítez", "username": "cocina", "role": "cocina" },
+    { "name": "Carlos Mendoza", "username": "caja", "role": "cajero" }
+  ]
+}
